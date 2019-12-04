@@ -74,7 +74,8 @@ defmodule Pigeon.Mixfile do
       files: ["lib", "mix.exs", "README*", "LICENSE*"],
       maintainers: ["Henry Popp", "Tyler Hurst"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/codedge-llc/pigeon"}
+      links: %{"GitHub" => "https://github.com/codedge-llc/pigeon"},
+      organization: "hippware"
     ]
   end
 end
