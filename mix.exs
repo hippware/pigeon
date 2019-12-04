@@ -1,7 +1,7 @@
 defmodule Pigeon.Mixfile do
   use Mix.Project
 
-  @version "1.3.0"
+  @version "1.4.0"
 
   def project do
     [
@@ -29,7 +29,7 @@ defmodule Pigeon.Mixfile do
       docs: [
         main: "getting-started",
         extras: [
-          "docs/Getting Started.md",
+          {"README.md", [filename: "getting-started", title: "Getting Started"]},
           "docs/APNS Apple iOS.md",
           "docs/FCM Android.md",
           "docs/ADM Amazon Android.md",
@@ -49,10 +49,10 @@ defmodule Pigeon.Mixfile do
 
   defp deps do
     [
-      {:poison, "~> 2.0 or ~> 3.0"},
+      {:poison, "~> 2.0 or ~> 3.0 or ~> 4.0"},
       {:httpoison, "~> 0.7 or ~> 1.0"},
       {:gen_stage, "~> 0.12"},
-      {:joken, "~> 2.0.0"},
+      {:joken, "~> 2.1"},
       {:kadabra, "~> 0.4.3", optional: true},
       {:earmark, "~> 1.0", only: :dev},
       {:ex_doc, "~> 0.18", only: :dev},

@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.4.0
+* `apns-push-type` header support for iOS 13. An additional `:push_type` key has been
+  added to the `APNS.Notification` struct.
+
+## v1.3.2
+
+* Document workers configuration for run-time configuration of push workers.
+* Modify run-time configuration of push workers so that multiple (or no)
+  workers may be returned by the startup configuration.
+
+## v1.3.1
+* Joken dependency bumped to 2.1
+
 ## v1.3.0
 * Support for FCM `content_available`, `mutable_content`, and `condition` keys
 * Set `priority` of APNS notifications
@@ -52,7 +65,7 @@
 ## v1.1.0
 * Minimum requirements now Elixir v1.4 and OTP 19.2 (Kadabra bumped
   to `v0.3.0`)
-* Runtime worker configs. Create a functions that return config
+* Startup worker configs. Create a functions that return config
   structs and specify them your `config.exs` with
 
 ```elixir

@@ -45,11 +45,16 @@ defmodule Pigeon.APNS.ConfigParser do
   def file_path(nil), do: nil
 
   def file_path(path) when is_binary(path) do
-    if :filelib.is_file(path), do: Path.expand(path), else: nil
+    path
+    |> Path.expand()
+    |> validate_file_path!()
   end
 
-  def file_path({app_name, path}) when is_atom(app_name),
-    do: Path.expand(path, :code.priv_dir(app_name))
+  def file_path({app_name, path}) when is_atom(app_name) do
+    path
+    |> Path.expand(:code.priv_dir(app_name))
+    |> validate_file_path!()
+  end
 
   @doc false
   def cert({_app_name, _path}), do: nil
@@ -76,4 +81,8 @@ defmodule Pigeon.APNS.ConfigParser do
   def uri_for_mode(:dev), do: @apns_development_api_uri
   def uri_for_mode(:prod), do: @apns_production_api_uri
   def uri_for_mode(_else), do: nil
+
+  defp validate_file_path!(path) do
+    if :filelib.is_file(path), do: path, else: raise("file not found: #{path}")
+  end
 end
